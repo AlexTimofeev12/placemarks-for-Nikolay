@@ -1,0 +1,52 @@
+ymaps.ready(function () {
+var myMap = new ymaps.Map('map', {
+center: [55.714863, 37.504393],
+zoom: 9
+}, {
+searchControlProvider: 'yandex#search'
+}),
+
+MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+'<div style="color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+),
+
+myPlacemark = new ymaps.Placemark(myMap.getCenter([55.714863, 37.504393]), {
+   hintContent: 'Башня Саурона в Мордоре',
+balloonContent: 'Это ваша метка, Гэндальф. Её координаты: Мосфильмовская улица, дом 70 к1'
+},
+{
+iconLayout: 'default#image',
+iconImageHref: 'http://68.media.tumblr.com/243dde293048b4aaa4ffa1e3ff602038/tumblr_n803bce9Hq1srhjf5o1_500.gif',
+iconImageSize: [50, 75],
+iconImageOffset: [-30, -30]
+       }),
+
+       myPlacemark2 = new ymaps.Placemark([55.892158, 37.386705], {
+           hintContent: 'Королевская резиденция в Гондоре',
+           balloonContent: 'Это ваша метка, Гэндальф. Её координаты: Соколово-Мещерская улица, дом 4',
+       }, {
+           iconLayout: 'default#imageWithContent',
+           iconImageHref: 'http://68.media.tumblr.com/0812dc587d95f3d4ae0900fbdc797122/tumblr_n3y8lcE5WZ1rq07b0o1_250.gif',
+           iconImageSize: [48, 48],
+           iconImageOffset: [-24, -24],
+           iconContentOffset: [15, 15],
+           iconContentLayout: MyIconContentLayout
+       }),
+
+       myPlacemark3 = new ymaps.Placemark([44.460682, 34.141472], {
+           hintContent: 'Шир. Хоббитания',
+           balloonContent: 'Это ваша метка, Гэндальф. Её координаты: ЖК Дипломат, Ялта',
+       }, {
+           iconLayout: 'default#imageWithContent',
+           iconImageHref: 'http://68.media.tumblr.com/ce5a61b460bbb68d84113093950cb6f9/tumblr_mhm5spzmKb1s3r70co1_250.gif',
+           iconImageSize: [48, 48],
+           iconImageOffset: [-25, -25],
+           iconContentOffset: [15, 15],
+           iconContentLayout: MyIconContentLayout
+       });
+
+   myMap.geoObjects
+       .add(myPlacemark)
+       .add(myPlacemark2)
+       .add(myPlacemark3);
+});
